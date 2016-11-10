@@ -16,13 +16,13 @@
     <header class="clearfix">  	
       <ul class="nav nav-tabs">    	
       <h1>Флэшкарточкер</h1>
-        <li><a href="#">Все карточки</a></li>
+        <%= link_to 'Все карточки', cards_path, class: "navbar-brand" %>
         <li><a href="#">Добавить карточку</a></li>
       </ul>
     </header>
-  </section>
+
   
   <%= yield %>
-
+  </section>
 </body>
 </html>
