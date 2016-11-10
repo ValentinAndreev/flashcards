@@ -1,4 +1,5 @@
 Metrics/LineLength:
-  Enabled: false
+  Enabled: No
 
-
+Style/StringLiterals:
+  Enabled: No
