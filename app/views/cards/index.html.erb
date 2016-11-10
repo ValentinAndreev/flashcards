@@ -1,7 +1,17 @@
-    
-    
-    <section>
+<section>
       <p style="font-size: 22px;">
         Первый в мире удобный менеджер флеш-карточек. Именно так.
       </p>
-    </section>
+</section>
+
+<h2>Все карточки</h2>
+<table>
+    <th>Исходный текст</th>
+    <th>Переведенный текст</th>
+    <th>Просмотрено</th>
+<% @card.each do |c| %>
+<tr><td><%= c.original_text %></td>
+<td><%= c.translated_text %></td>
+<td><%= c.review_date %></td></tr>
+<% end %>
+</table>
