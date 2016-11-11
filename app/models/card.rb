@@ -6,7 +6,7 @@ class Card < ActiveRecord::Base
   protected
 
   def set_date
-    self.review_date ||= 3.days.from_now
+    self.review_date ||= 3.days.from_now.to_date
   end    
     
   def compare
