@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-  before_action :set_date
     
   def index
     @card = Card.all    
@@ -15,7 +14,6 @@ class CardsController < ApplicationController
   
   def create
     @card = Card.new(card_params)
-    @card.review_date = @reviewtime 
     @card.original_text.capitalize!
     @card.translated_text.capitalize!
     if (@card.original_text != @card.translated_text) && @card.save    
@@ -44,10 +42,6 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     @card.destroy    
     redirect_to action: 'index'      
-  end
-  
-  def set_date
-    @reviewtime = Time.now.to_date+3 
   end
   
   def card_params

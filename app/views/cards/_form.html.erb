@@ -4,6 +4,6 @@
 <%= a.label :translated_text  %><br>
 <%= a.text_field :translated_text, size: '100', class: "form-control" %><br>
 <%= a.label :review_date  %><br>
-<%= a.text_field :review_date, size: '100', class: "form-control", placeholder: @reviewtime %><br>
+<%= a.text_field :review_date, size: '100', class: "form-control", placeholder: Time.now.to_date+3 %><br>
 <%= a.submit 'Save Article', class: "btn btn-primary" %>
 <% end %>
