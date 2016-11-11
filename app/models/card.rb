@@ -9,6 +9,6 @@ protected
     end    
     
    def compare
-        errors.add(:original_text, "Equal text") if self.original_text.downcase! == self.translated_text.downcase!
+        errors.add(:original_text, "Equal text") if self.original_text.casecmp(self.translated_text) == 0
    end
 end
