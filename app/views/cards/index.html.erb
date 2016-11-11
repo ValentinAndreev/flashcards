@@ -10,8 +10,11 @@
     <th>Переведенный текст</th>
     <th>Просмотрено</th>
 <% @card.each do |c| %>
-<tr><td><%= c.original_text %></td>
+<tr>
+<td><%= c.original_text %></td>
 <td><%= c.translated_text %></td>
-<td><%= c.review_date %></td></tr>
+<td><%= c.review_date %></td>
+<td><%= link_to "Показать", card_path(c)%></td>
+</tr>
 <% end %>
 </table>
