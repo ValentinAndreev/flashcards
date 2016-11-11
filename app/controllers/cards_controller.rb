@@ -14,9 +14,7 @@ class CardsController < ApplicationController
   
   def create
     @card = Card.new(card_params)
-    @card.original_text.capitalize!
-    @card.translated_text.capitalize!
-    if (@card.original_text != @card.translated_text) && @card.save    
+    if @card.save    
       redirect_to action: 'index'
     else
       render 'new'
@@ -29,9 +27,7 @@ class CardsController < ApplicationController
   
   def update
     @card = Card.find(params[:id])    
-    @card.original_text.capitalize!
-    @card.translated_text.capitalize!
-    if (@card.original_text != @card.translated_text) && @card.update(card_params)  
+    if @card.update(card_params)  
       redirect_to action: 'index'
     else
       render 'edit'
