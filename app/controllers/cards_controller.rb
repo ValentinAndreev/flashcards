@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-  before_action :set_date
     
   def index
     @card = Card.all    
