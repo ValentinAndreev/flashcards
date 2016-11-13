@@ -6,9 +6,9 @@
 
 * Для запуска локально: 
 
-git clone git@github.com:ValentinAndreev/flashcards.git
-bundle install
-rake db:migrate
-rails s
+git clone git@github.com:ValentinAndreev/flashcards.git  
+bundle install  
+rake db:migrate  
+rails s  
 
 
