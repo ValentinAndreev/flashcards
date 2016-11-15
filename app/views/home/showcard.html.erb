@@ -4,6 +4,7 @@
 <%= form_tag(controller: "home", action: "reciveanswer", url: answer_path) do %>
   <%= label_tag(:text, "Перевод") %><br>
   <%= text_field_tag(:text) %>
+  <%= hidden_field_tag "id", @cardcheck.id %>
   <%= submit_tag("Отправить") %>
 <% end %>
 </div>

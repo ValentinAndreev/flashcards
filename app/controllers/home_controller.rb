@@ -1,19 +1,18 @@
 class HomeController < ApplicationController
   def showcard
     @cardcheck = Card.randomcard
-    @@card = @cardcheck
   end
   
   def reciveanswer
-    if @@card.translated_text == params[:text] then
+    card = Card.find(params[:id])
+    if card.translated_text == params[:text] then
       flash.notice = 'Правильно'  
-      @@card.review_date = 3.days.from_now.to_date
-      @@card.save
-      redirect_to root_path
+      card.review_date = 3.days.from_now.to_date
+      card.save
     else
-      flash.notice = 'Не правильно. Правильно: '+ @@card.translated_text      
-      redirect_to root_path      
+      flash.notice = 'Не правильно. Правильно: '+ card.translated_text          
     end
+    redirect_to root_path 
   end
   
   def card_params
