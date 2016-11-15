@@ -1,0 +1,10 @@
+<%= @cardcheck.inspect %>
+<div class="text-center">
+<h3>Слово: <%= @cardcheck.original_text %></h3><hr>
+<%= form_tag(controller: "home", action: "reciveanswer", url: answer_path) do %>
+  <%= label_tag(:text, "Перевод") %><br>
+  <%= text_field_tag(:text) %>
+  <%= submit_tag("Отправить") %>
+<% end %>
+</div>
+<hr>
