@@ -1,11 +1,17 @@
 class Card < ActiveRecord::Base
-    validates :original_text, :translated_text, :review_date, presence: true
-    validate :compare
-    before_validation :set_date
+  validates :original_text, :translated_text, :review_date, presence: true
+  validate :compare
+  before_validation :set_date
+    
+  scope :review, -> { where('review_date = ?', Date.today) }
+   
+  def self.randomcard
+    Card.review.order("RANDOM()").first
+  end
     
 protected
   def set_date
-    self.review_date ||= 3.days.from_now.to_date
+    self.review_date ||= Date.today
   end    
     
  def compare
