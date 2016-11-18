@@ -3,13 +3,23 @@ class Card < ActiveRecord::Base
   validate :compare
   before_validation :set_date
     
-  scope :review, -> { where('review_date = ?', Date.today-1) }
+  scope :review, -> { where('review_date = ?', Date.today) }
    
   def self.randomcard
     Card.review.order("RANDOM()").first
   end
-    
-protected
+  
+  def self.check_translation(params)
+    card = Card.find(params[:id])
+    if card.translated_text == params[:text] then
+      card.review_date = 3.days.from_now.to_date
+      card.save
+      false
+    else
+      card.translated_text
+    end
+  end
+     
   def set_date
     self.review_date ||= Date.today
   end    
