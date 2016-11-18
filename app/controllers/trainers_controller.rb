@@ -1,12 +1,10 @@
 class TrainersController < ApplicationController
   def review
-    card = Card.find(params[:id])
-    if card.translated_text == params[:text] then
+    translation = Card.check_translation(params)
+    if translation == 'right translation'
       flash.notice = 'Правильно'  
-      card.review_date = 3.days.from_now.to_date
-      card.save
     else
-      flash.notice = 'Не правильно. Правильно: '+ card.translated_text          
+      flash.notice = 'Не правильно. Правильно: '+ translation         
     end
     redirect_to root_path 
   end
