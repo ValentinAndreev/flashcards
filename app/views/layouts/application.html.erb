@@ -18,10 +18,13 @@
       <h1>Флэшкарточкер</h1>
         <%= link_to 'Все карточки', cards_path, class: "navbar-brand" %>
         <%= link_to 'Новая карточка', new_card_path, class: "navbar-brand" %>
+        <%= link_to 'Проверка', root_path, class: "navbar-brand" %>      
       </ul>
     </header>
 
-  
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+         
   <%= yield %>
   </section>
 </body>
