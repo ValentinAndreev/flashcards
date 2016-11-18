@@ -3,13 +3,12 @@ class Card < ActiveRecord::Base
   validate :compare
   before_validation :set_date
     
-  scope :review, -> { where('review_date = ?', Date.today-1) }
+  scope :review, -> { where(review_date: Date.today) }
    
   def self.randomcard
     Card.review.order("RANDOM()").first
   end
-    
-protected
+     
   def set_date
     self.review_date ||= Date.today
   end    
