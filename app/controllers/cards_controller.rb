@@ -1,11 +1,11 @@
 class CardsController < ApplicationController
+  before_action :set_card, except: [:index, :new, :create]
     
   def index
     @card = Card.all    
   end
   
   def show
-    @card = Card.find(params[:id])
   end
   
   def new
@@ -14,19 +14,17 @@ class CardsController < ApplicationController
   
   def create
     @card = Card.new(card_params)
-    if  @card.save    
+    if @card.save    
       redirect_to cards_path
     else
       render 'new'
     end    
   end
   
-  def edit
-    @card = Card.find(params[:id])    
+  def edit 
   end
   
-  def update
-    @card = Card.find(params[:id])    
+  def update   
     if @card.update(card_params)  
       redirect_to cards_path
     else
@@ -35,9 +33,12 @@ class CardsController < ApplicationController
   end
   
   def destroy
-    @card = Card.find(params[:id])
     @card.destroy    
     redirect_to cards_path   
+  end
+  
+  def set_card
+    @card = find(params[:id])    
   end
   
   def card_params
