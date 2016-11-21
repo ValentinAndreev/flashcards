@@ -1,5 +1,6 @@
 require "rails_helper"
 require 'support/factory_girl'
+require "check_translation.rb"
 
 RSpec.describe Card, type: :model do
   
@@ -8,7 +9,7 @@ context 'check translation' do
   
   it "right translation" do
     result = translation({ id: 1, text: 'not' }) 
-    expect(result) == "right translation"
+    expect(result).to be_a_success
   end
   
   it "change date" do
@@ -18,11 +19,11 @@ context 'check translation' do
   
   it "wrong translation" do
     result = translation({ id: 1, text: 'yes' })
-    expect(result) == card.translated_text
+    expect(result).not_to be_a_success
   end
   
   def translation(params)
-    Card.check_translation(params) 
+    CheckTranslation.call(card: card, params: params)
   end  
 end
 

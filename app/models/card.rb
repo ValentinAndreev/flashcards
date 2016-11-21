@@ -8,17 +8,6 @@ class Card < ActiveRecord::Base
   def self.randomcard
     Card.review.order("RANDOM()").first
   end
-  
-  def self.check_translation(params)
-    card = find(params[:id])
-    if card.translated_text == params[:text] then
-      card.review_date = 3.days.from_now.to_date
-      card.save
-      'right translation'
-    else
-      card.translated_text
-    end
-  end
      
   def set_date
     self.review_date ||= Date.today
