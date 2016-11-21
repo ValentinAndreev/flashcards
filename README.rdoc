@@ -11,4 +11,4 @@
 3. rake db:migrate  
 4. rails s  
 
-
+{<img src="https://travis-ci.org/ValentinAndreev/flashcards.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ValentinAndreev/flashcards]
