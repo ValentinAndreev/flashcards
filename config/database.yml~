@@ -26,7 +26,3 @@ test:
   timeout: 5000
   username: valentin
   password: 1
-
-test:
-  adapter: postgresql
-  database: test
