@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ValentinAndreev/flashcards.svg?branch=master)](https://travis-ci.org/ValentinAndreev/flashcards)
+
 == Менеджер флеш-карточек
 
 * Написан на ruby 2.3.1p112 и Rails 4.2.6
@@ -10,5 +12,3 @@
 2. bundle install  
 3. rake db:migrate  
 4. rails s  
-
-
