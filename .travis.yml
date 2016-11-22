@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+  - 2.3
+sudo: false
+addons:
+  postgresql: "9.4"
+services:
+  - postgresql
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - psql -c 'create database test' -U postgres
+bundler_args: --binstubs=./bundler_stubs

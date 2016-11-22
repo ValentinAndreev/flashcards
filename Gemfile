@@ -40,6 +40,12 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'  
+  gem 'capybara'  
+  gem 'launchy'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
