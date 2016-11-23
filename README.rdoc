@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ValentinAndreev/flashcards.svg?branch=master)](https://travis-ci.org/ValentinAndreev/flashcards)
+{<img src="https://travis-ci.org/ValentinAndreev/flashcards.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/ValentinAndreev/flashcards]
 
 == Менеджер флеш-карточек
 
