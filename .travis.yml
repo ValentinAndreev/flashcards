@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.2
+sudo: false
+addons:
+  postgresql: "9.4"
+services:
+  - postgresql
+env:
+  - DB=postgresql
+script:
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - cp config/travisdatabase.yml config/database.yml
+bundler_args: --binstubs=./bundler_stubs
