@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'sorcery'
 gem 'interactor'
 gem 'nokogiri'
 gem 'simple_form'

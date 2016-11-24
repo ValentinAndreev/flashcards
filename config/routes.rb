@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   root 'home#showcard'  
   resources :cards
   post 'answer' => 'trainers#review'
