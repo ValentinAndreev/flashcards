@@ -1,20 +1,20 @@
 <section>
       <p style="font-size: 22px;">
-        Первый в мире удобный менеджер флеш-карточек. Именно так.
+      <% t(:Flash_cards_manager) %>
       </p>
 </section>
 
-<h2>Все карточки</h2>
+<h2><% t(:All_cards) %></h2>
 <table>
-    <th>Исходный текст</th>
-    <th>Переведенный текст</th>
-    <th>Дата просмотра</th>
+    <th><%= t(:Original_text) %></th>
+    <th><%= t(:Translated_text) %></th>
+    <th><%= t(:Date_of_review) %></th>
 <% @card.each do |card| %>
 <tr>
 <td><%= card.original_text %></td>
 <td><%= card.translated_text %></td>
 <td><%= card.review_date %></td>
-<td><%= link_to "Показать", card_path(card)%></td>
+<td><%= link_to t(:Show) , card_path(card)%></td>
 </tr>
 <% end %>
 </table>

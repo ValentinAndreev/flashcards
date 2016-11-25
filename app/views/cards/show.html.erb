@@ -1,10 +1,10 @@
 <p>
-Исходный текст:
+<%= t(:Original_text) %>
 <%= @card.original_text %>
 </p>
 <p>
-Переведенный текст:
+<%= t(:Translated_text) %>
 <%= @card.translated_text %>
 </p>
-<%= link_to 'Редактировать', edit_card_path(@card), class: "btn btn-primary"  %>
-<%= link_to 'Удалить', card_path(@card), method: :delete, data: {confirm: "Вы уверены?"}, class: "btn btn-primary"   %>
+<%= link_to t(:Edit), edit_card_path(@card), class: "btn btn-primary"  %>
+<%= link_to t(:Delete), card_path(@card), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>

@@ -5,5 +5,5 @@
 <%= card.text_field :translated_text, size: '100', class: "form-control" %><br>
 <%= card.label :review_date  %><br>
 <%= card.text_field :review_date, size: '100', class: "form-control", placeholder: 3.days.from_now.to_date %><br>
-<%= card.submit 'Сохранить', class: "btn btn-primary" %>
+<%= card.submit class: "btn btn-primary" %>
 <% end %>
