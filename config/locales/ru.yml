@@ -1,0 +1,40 @@
+ru:
+  Profile_was_changed: 'Вы изменили свой профиль.' 
+  User_was_deleted: 'Пользователь был удален.' 
+  Login_from_twitter: 'Вход через твиттер.'
+  Cant_login_from_twitter: 'Не удалось зайти через твиттер.'
+  Edit_profile: 'Редактировать профиль'
+  Logout: 'Выход'
+  Registration: 'Регистрация'
+  Login: 'Вход'
+  All_cards: 'Все карточки'
+  New_card: 'Новая карточка'
+  Training: 'Проверка'
+  You_are_right: 'Правильно.'
+  You_are_wrong_right_translation_is: 'Не правильно. Правильно:'
+  Cant_login: 'Не удалось войти.'
+  Edit: 'Редактировать'
+  Flash_cards_manager: 'Менеджер флэш-карточек'
+  Original_text: 'Исходный текст'
+  Translated_text: 'Переведенный текст'
+  Date_of_review: 'Дата пересмотра'
+  Show: 'Показать'
+  New: 'Создать'
+  Save: 'Соранить'
+  Flashcards: 'Флэшкарточкер'
+  Succesfully_registered_and_entered: 'Успешная регистрация и вход.'
+  Send: 'Отправить'
+  Hello: 'Привет'
+  Hello_you_must_register_or_login_to_continue: Привет, зарегистрируйтесь или войдите, чтобы продолжить
+  Are_you_sure: 'Вы уверены?'
+  Delete: 'Удалить'   
+  Back: 'Назад'
+  Word: 'Слово'
+
+  activerecord:
+    errors:
+      models:
+        card:
+          attributes:
+            user:
+              blank: "can't be blank"
