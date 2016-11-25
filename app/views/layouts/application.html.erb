@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Флэшкарточкер</title>
-  <link rel="stylesheet" href="application.css">
+  <title>Flashcards</title>
+  <link rel="stylроesheet" href="application.css">
   <%= stylesheet_link_tag    'bootstrap.min'%>  
   <%= javascript_include_tag 'bootstrap.min'%>  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,14 +13,26 @@
 <body>
 
   <section id="container">
-    <header class="clearfix">  	
-      <ul class="nav nav-tabs">    	
-      <h1>Флэшкарточкер</h1>
-        <%= link_to 'Все карточки', cards_path, class: "navbar-brand" %>
-        <%= link_to 'Новая карточка', new_card_path, class: "navbar-brand" %>
-        <%= link_to 'Проверка', root_path, class: "navbar-brand" %>      
+    <header class="clearfix"> 
+      <% if current_user %>
+        <%= current_user.email %>
+        <%= link_to t(:Edit_profile), edit_user_path(current_user.id) %>
+        <%= link_to t(:Logout), logout_path, method: :post %>
+      <% else %>
+        <%= link_to t(:Registration), new_user_path %> |
+        <%= link_to t(:Login), login_path %>
+        <% if ENV['TWITTER_KEY'] && ENV['TWITTER_SECRET'] %>
+        <%= link_to t(:Login_from_twitter), auth_at_provider_path(provider: :twitter) %>  
+        <% end %>
+      <% end %> 	
+      <ul class="nav nav-tabs">  
+        <h1> <%= t(:Flashcards) %></h1>  	
+        <%= link_to t(:All_cards), cards_path, class: "navbar-brand" %>
+        <%= link_to t(:New_card), new_card_path, class: "navbar-brand" %>
+        <%= link_to t(:Training), showcard_path, class: "navbar-brand" %>   
       </ul>
     </header>
+    <h3><%= t(:Flash_cards_manager) %></h3>
 
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>

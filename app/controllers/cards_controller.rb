@@ -1,19 +1,20 @@
 class CardsController < ApplicationController
-  before_action :set_card, except: [:index, :new, :create]
+  before_action :set
+  before_action :require_login
     
   def index
-    @card = Card.all    
+    @card = current_user.cards.all    
   end
   
   def show
   end
   
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
   
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.new(card_params)
     if @card.save    
       redirect_to cards_path
     else
@@ -36,9 +37,11 @@ class CardsController < ApplicationController
     @card.destroy    
     redirect_to cards_path   
   end
+
+  private
   
-  def set_card
-    @card = Card.find(params[:id])    
+  def set
+      @card = current_user.cards.find(params[:id]) if params[:id] && current_user  
   end
   
   def card_params
