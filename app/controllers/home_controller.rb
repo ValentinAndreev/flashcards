@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def showcard
-    @cardcheck = Card.randomcard
-    redirect_to cards_path if !@cardcheck 
+    @cardcheck = current_user.cards.randomcard if current_user
+    redirect_to cards_path unless @cardcheck 
   end
 end
