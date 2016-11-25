@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  You_are_wrong_right_translation_is: 'You are wrong, right translation is: '
+  Send: 'Send'
+  Flash_cards_manager: 'Flash cards manager'
+  You_are_right: 'You are right'
+  Logout: 'Logout'
+  Login: 'Login'
+  Back: 'Back'
+  Cant_login: 'Cant login'
+  Login_from_twitter: 'Login from twitter'
+  Hello_you_must_register_or_login_to_continue: 'Hello, you must register or login to continue'
+
+

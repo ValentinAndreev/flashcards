@@ -1,5 +1,5 @@
-<h3><%= t(:Edit_profile) %></h3>
-<%= simple_form_for(@user) do |f| %>
+<h3>Регистрация</h3>
+<%= simple_form_for @user, :url => new_user_path do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :email %>
