@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Флэшкарточкер</title>
-  <link rel="stylesheet" href="application.css">
+  <link rel="stylроesheet" href="application.css">
   <%= stylesheet_link_tag    'bootstrap.min'%>  
   <%= javascript_include_tag 'bootstrap.min'%>  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,12 +13,21 @@
 <body>
 
   <section id="container">
-    <header class="clearfix">  	
+    <header class="clearfix"> 
+      <% if current_user %>
+        <%= current_user.email %>
+        <%= link_to "Редактировать профиль", edit_user_path(current_user.id) %>
+        <%= link_to "Выход", :logout, method: :post %>
+      <% else %>
+        <%= link_to "Регистрация", new_user_path %> |
+        <%= link_to "Вход", :login %>
+        <%= link_to 'Вход через Twitter', auth_at_provider_path(:provider => :twitter) %> | 
+      <% end %> 	
       <ul class="nav nav-tabs">    	
       <h1>Флэшкарточкер</h1>
         <%= link_to 'Все карточки', cards_path, class: "navbar-brand" %>
         <%= link_to 'Новая карточка', new_card_path, class: "navbar-brand" %>
-        <%= link_to 'Проверка', root_path, class: "navbar-brand" %>      
+        <%= link_to 'Проверка', showcard_path, class: "navbar-brand" %>    
       </ul>
     </header>
 
