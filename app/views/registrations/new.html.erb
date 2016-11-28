@@ -1,0 +1,14 @@
+<h3>Регистрация</h3>
+<%= simple_form_for @user, :url => new_user_path do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, I18n.t(:Create_user), class: "btn btn-primary" %>
+  </div>
+<% end %>
+<%= link_to t(:Back), root_path %>

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :require => 'dotenv/rails-now', :groups => [:development, :test]
+gem 'sorcery'
 gem 'interactor'
 gem 'nokogiri'
 gem 'simple_form'

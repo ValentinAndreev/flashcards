@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20161123094736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
+
   create_table "cards", force: :cascade do |t|
     t.string   "original_text",   null: false
     t.string   "translated_text", null: false
@@ -28,10 +38,11 @@ ActiveRecord::Schema.define(version: 20161123094736) do
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",      limit: 30
-    t.string   "password",   limit: 30
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "email",            null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
