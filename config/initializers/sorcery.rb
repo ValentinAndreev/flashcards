@@ -4,7 +4,7 @@
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
 
 require 'dotenv'
-Dotenv.load(File.expand_path('../twitterkeys.env', __FILE__))
+Dotenv.load(File.expand_path('../../config/twitterkeys.env', File.dirname(__FILE__)))
 
 Rails.application.config.sorcery.submodules = [:external]
 
