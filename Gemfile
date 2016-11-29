@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'paperclip'
+gem 'aws-sdk'
 gem 'dotenv-rails', :require => 'dotenv/rails-now', :groups => [:development, :test]
 gem 'sorcery'
 gem 'interactor'
