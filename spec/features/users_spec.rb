@@ -72,7 +72,13 @@ feature 'Logined user actions' do
   scenario 'user can check own cards' do
     click_on t('Training')     
     expect(page).to have_content t('Word')   
-  end        
+  end  
+
+  scenario 'user can attach image to card' do    
+    click_on t('New_card') 
+    attach_file 'card[image]', Rails.root.to_s + '/spec/cat.jpg'
+    expect(page).to have_content 'cat.jpg'  
+  end       
 end  
 
 feature 'User can`t do this' do
