@@ -16,5 +16,5 @@
 !/log/.keep
 /tmp
 
-/config/initializers/twitterkeys.env
+/config/twitterkeys.env
 /config/database.yml
