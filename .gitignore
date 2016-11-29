@@ -18,3 +18,4 @@
 
 /config/twitterkeys.env
 /config/database.yml
+/config/s3.env

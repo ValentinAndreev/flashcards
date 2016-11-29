@@ -1,4 +1,7 @@
 <div class="text-center">	
+  <% if @cardcheck.image_file_name %>
+    <%= image_tag @cardcheck.image.url :medium %><br>
+  <% end %>
 <h3><%= t(:Word)%>: <%= @cardcheck.original_text %></h3><hr>
 <%= form_tag(answer_path) do %>
   <%= label_tag(:text, t(:Translated_text)) %><br>
