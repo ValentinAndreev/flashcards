@@ -34,6 +34,7 @@ ru:
   Delete: 'Удалить'   
   Back: 'Назад'
   Word: 'Слово'
+  Image: 'Изображение'  
 
   activerecord:
     errors:
