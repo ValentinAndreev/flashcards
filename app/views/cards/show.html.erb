@@ -1,10 +1,17 @@
-<p>
-<%= t(:Original_text) %>
-<%= @card.original_text %>
-</p>
-<p>
-<%= t(:Translated_text) %>
-<%= @card.translated_text %>
-</p>
-<%= link_to t(:Edit), edit_card_path(@card), class: "btn btn-primary"  %>
-<%= link_to t(:Delete), card_path(@card), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>
+<div class="text-center">	
+  <p>
+    <% if @card.image_file_name %>
+	  <%= image_tag @card.image.url(:medium) %>
+    <% end %>
+  </p>
+  <p>
+    <%= t(:Original_text) %>
+    <%= @card.original_text %>
+  </p>
+  <p>
+    <%= t(:Translated_text) %>
+    <%= @card.translated_text %>
+  </p>
+  <%= link_to t(:Edit), edit_card_path(@card), class: "btn btn-primary"  %>  
+  <%= link_to t(:Delete), card_path(@card), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>
+</div>

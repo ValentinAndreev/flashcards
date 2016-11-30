@@ -5,6 +5,9 @@ class Card < ActiveRecord::Base
   before_validation :set_date
     
   scope :review, -> { where(review_date: Date.today) }
+
+  has_attached_file :image, styles: { medium: "360x360>" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
    
   def self.randomcard
     Card.review.order("RANDOM()").first
