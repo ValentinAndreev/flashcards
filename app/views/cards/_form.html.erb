@@ -1,4 +1,5 @@
 <%= form_for @card do |card| %>
+<%= card.file_field :image %>
 <%= card.label :original_text %><br>
 <%= card.text_field :original_text , size: '100', class: "form-control" %><br>
 <%= card.label :translated_text  %><br>
