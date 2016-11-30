@@ -29,14 +29,14 @@ end
 
 feature 'Logined user actions' do    
   before do
-    user = create(:user) 
+    @user = create(:user) 
     visit root_path
     click_on t('Login')
-    fill_in 'Email', with: user.email
+    fill_in 'Email', with: @user.email
     fill_in 'Password', with: 'password'
     click_on t('Log')
     expect(page).to have_content t('Succesfully_logined')
-    card = create(:card, user: user)        
+    @card = create(:card, user: @user)        
   end
   
   scenario 'users logout' do
@@ -72,7 +72,13 @@ feature 'Logined user actions' do
   scenario 'user can check own cards' do
     click_on t('Training')     
     expect(page).to have_content t('Word')   
-  end        
+  end      
+
+  scenario 'test of attached image' do        
+    click_on t('All_cards') 
+    click_on t('Show')  
+    save_and_open_page
+  end     
 end  
 
 feature 'User can`t do this' do
@@ -133,6 +139,3 @@ feature 'Guests actions' do
     expect(page).to_not have_content t('New')       
   end 
 end
-
-
-

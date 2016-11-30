@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'dotenv-rails', :require => 'dotenv/rails-now', :groups => [:development, :test]
+gem "paperclip", "~> 5.0.0"
 gem 'sorcery'
 gem 'interactor'
 gem 'nokogiri'
