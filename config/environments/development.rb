@@ -1,4 +1,20 @@
+require 'dotenv-rails'
+
 Rails.application.configure do
+
+  Dotenv.load(Rails.root.join('config', 'aws.env'))
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        bucket: 'flashcardsimages',
+        s3_region: 'eu-central-1',
+        s3_protocol: 'https',
+        s3_host_name: 's3.eu-central-1.amazonaws.com', 
+        access_key_id: ENV['ACCESS_KEY_ID'],
+        secret_access_key: ENV['SECRET_ACCESS_KEY']
+      }
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

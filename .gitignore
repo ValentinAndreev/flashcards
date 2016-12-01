@@ -18,3 +18,4 @@
 
 /config/initializers/twitterkeys.env
 /config/database.yml
+/config/aws.env
