@@ -15,6 +15,8 @@ class CardsController < ApplicationController
   
   def create
     @card = current_user.cards.new(card_params)
+    p 1111111111111111111111111
+    p @card.image
     if @card.save    
       redirect_to cards_path
     else
