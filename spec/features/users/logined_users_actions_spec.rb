@@ -53,7 +53,7 @@ feature 'Logined user actions' do
     expect(page).to_not have_content('not')    
   end 
   
-  scenario 'user can check own cards' do
+  scenario 'user can see check page' do
     click_on t('Training')      
     expect(page).to have_content t('Word')      
   end      
