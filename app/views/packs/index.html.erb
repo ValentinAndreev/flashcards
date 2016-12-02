@@ -1,0 +1,12 @@
+<h4> Все колоды </h4>
+<% @pack.each do |pack| %>
+	<p>
+	<%= t(:Name)%> <%= pack.title %>
+	</p>
+	<p>
+	<%= link_to t(:Training), showcard_path(pack.id), class: "btn btn-primary" %> 
+	<%= link_to t(:All_cards), pack_cards_path(pack), class: "btn btn-primary"   %>
+    <%= link_to t(:Rename), edit_pack_path(pack), class: "btn btn-primary"  %>  
+    <%= link_to t(:Delete), pack_path(pack), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>	
+    </p>
+<% end %>

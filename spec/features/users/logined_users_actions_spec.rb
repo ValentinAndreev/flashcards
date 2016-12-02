@@ -14,7 +14,8 @@ feature 'Logined user actions' do
     fill_in 'Password', with: 'password'
     click_on t('Log')
     expect(page).to have_content t('Succesfully_logined')
-    @card = create(:card, user: @user)        
+    @pack = create(:pack, user: @user)    
+    @card = create(:card, pack: @pack) 
   end
   
   scenario 'users logout' do
@@ -32,13 +33,18 @@ feature 'Logined user actions' do
   end
   
   scenario 'user can create card' do   
-    expect(@card.user).to eq (@user)      
+    pack = @card.pack
+    user = pack.user 
+    click_on t('All_packs')      
+    click_on t('All_cards')     
+    expect(page).to have_content t('Show')        
   end 
     
   scenario 'user can edit own cards' do
     @card.translated_text = 'yes'
     @card.save
-    click_on t('All_cards')  
+    click_on t('All_packs')      
+    click_on t('All_cards')   
     click_on t('Show')     
     click_on t('Edit') 
     fill_in 'Translated text', with: 'not'
@@ -47,6 +53,7 @@ feature 'Logined user actions' do
   end 
 
   scenario 'user can delete own cards' do
+    click_on t('All_packs')       
     click_on t('All_cards')  
     click_on t('Show')     
     click_on t('Delete')  
@@ -54,6 +61,8 @@ feature 'Logined user actions' do
   end 
   
   scenario 'user can see check page' do
+    click_on t('All_packs')       
+    click_on t('All_cards')     
     click_on t('Training')      
     expect(page).to have_content t('Word')      
   end      
@@ -61,4 +70,22 @@ feature 'Logined user actions' do
   scenario 'test of attached image' do     
     expect(@card.image_file_name).to eq ('cat.jpg')
   end     
+
+  scenario 'user can create pack' do   
+    user = @pack.user
+    click_on t('All_packs')     
+    expect(page).to have_content t('Name')    
+  end 
+
+  scenario 'user can delete pack' do   
+    click_on t('All_packs') 
+    click_on t('Delete')  
+    expect(page).to_not have_content t('Name')    
+  end 
+
+  scenario 'user can rename pack' do   
+    click_on t('All_packs') 
+    click_on t('Rename') 
+    expect(page).to have_content t('Rename')      
+  end 
 end  
