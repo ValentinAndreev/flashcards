@@ -1,0 +1,15 @@
+<div class="container">
+  <h4><%= t(:Base_pack) if current_user&.review_pack %></h4>
+  <% @packs.each do |pack| %>
+    <% if pack.base == true %>
+      <%= render 'list', pack: pack, button: t(:Remove)  %>
+    <% end %> 
+  <% end %>
+
+<h4><%= t(:All_packs) if @packs.count>0 %></h4>
+  <% @packs.each do |pack| %>
+    <% if pack.base == false %>
+      <%= render 'list', pack: pack, button: t(:Add) %>
+    <% end %> 
+  <% end %>
+</div>
