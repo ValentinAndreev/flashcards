@@ -1,0 +1,5 @@
+<%= form_for @pack do |pack| %>
+  <%= pack.label :title %><br>
+  <%= pack.text_field :title , size: '100', class: "form-control" %><br>
+  <%= pack.submit class: "btn btn-primary" %>
+<% end %>
