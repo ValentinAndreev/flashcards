@@ -3,20 +3,21 @@ class CardsController < ApplicationController
   before_action :require_login
     
   def index
-    @card = current_user.cards.all    
+    @card = @pack.cards.all    
   end
   
   def show
   end
   
   def new
-    @card = current_user.cards.new
+    @card = @pack.cards.new
   end
   
   def create
-    @card = current_user.cards.new(card_params)
+    @card = @pack.cards.new(card_params)
+    @card.user_id = @pack.user_id
     if @card.save    
-      redirect_to cards_path
+      redirect_to pack_cards_path
     else
       render 'new'
     end    
@@ -27,7 +28,7 @@ class CardsController < ApplicationController
   
   def update   
     if @card.update(card_params)  
-      redirect_to cards_path
+      redirect_to pack_cards_path
     else
       render 'edit'
     end      
@@ -35,13 +36,14 @@ class CardsController < ApplicationController
   
   def destroy
     @card.destroy    
-    redirect_to cards_path   
+    redirect_to pack_cards_path  
   end
 
   private
   
   def set
-      @card = current_user.cards.find(params[:id]) if params[:id] && current_user  
+      @pack = current_user.packs.find(params[:pack_id]) if params[:pack_id]
+      @card = @pack.cards.find(params[:id]) if params[:id] && @pack 
   end
   
   def card_params
