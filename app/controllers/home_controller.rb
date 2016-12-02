@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   def showcard
-    @cardcheck = current_user.cards.randomcard if current_user
-    redirect_to cards_path unless @cardcheck 
+    @pack = current_user.packs.find(params[:id])
+    @cardcheck = @pack.cards.randomcard if @pack
+    unless @cardcheck
+      redirect_to packs_path, notice: t(:No_cards_for_training)
+    end
   end
 end

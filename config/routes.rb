@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root 'home#welcome' 
-  resources :cards
+  resources :packs  do
+      resources :cards
+  end 
   post 'answer' => 'trainers#review'
  
   resources :user_sessions
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
   
-  get 'showcard' => 'home#showcard', :as => :showcard
+  get 'showcard/pack:id' => 'home#showcard', :as => :showcard
   
   get 'oauths/oauth'
   get 'oauths/callback'  

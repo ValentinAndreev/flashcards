@@ -18,18 +18,8 @@ feature 'Guests actions' do
     expect(page).to_not have_content t('Edit_profile')    
   end 
   
-  scenario 'guest can`t see cards' do
-    click_on t('All_cards')   
-    expect(page).to_not have_content t('Show')  
+  scenario 'guest can`t see packs and cards' do
+    click_on t('All_packs')      
+    expect(page).to_not have_content t('All_cards')   
   end   
-  
-  scenario 'guest can`t check another users cards' do
-    click_on t('Training')      
-    expect(page).to_not have_content t('Word')  
-  end    
-  
-  scenario 'guest can`t create card' do  
-    click_on t('New_card')    
-    expect(page).to_not have_content t('New')       
-  end 
 end

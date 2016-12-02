@@ -12,6 +12,7 @@ ru:
   Create_user: 'Создать пользователя'
   All_cards: 'Все карточки'
   New_card: 'Новая карточка'
+  New_pack: 'Новая колода'  
   Training: 'Проверка'
   You_are_right: 'Правильно.'
   You_are_wrong_right_translation_is: 'Не правильно. Правильно:'
@@ -34,11 +35,16 @@ ru:
   Delete: 'Удалить'   
   Back: 'Назад'
   Word: 'Слово'
+  Rename: 'Переименовать'
+  All_packs: 'Все колоды'
+  Pack: 'Колода'
+  Name: 'Название'
+  No_cards_for_training: 'Нет карточек для проверки'
 
   activerecord:
     errors:
       models:
         card:
           attributes:
-            user:
+            pack:
               blank: "can't be blank"

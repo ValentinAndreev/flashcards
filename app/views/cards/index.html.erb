@@ -1,10 +1,14 @@
 <section>
-      <p style="font-size: 22px;">
+      <h2>
       <% t(:Flash_cards_manager) %>
-      </p>
+      </h2>
+      <h4><%= t(:Pack) %>:<%= @pack.title %></h4>
 </section>
+    <%= link_to t(:New_card), new_pack_card_path(@pack), class: "btn btn-primary" %>
+	<%= link_to t(:Training), showcard_path(@pack.id), class: "btn btn-primary" %> 
+	<%= link_to t(:Back), packs_path, class: "btn btn-primary" %> 
 
-<h2><% t(:All_cards) %></h2>
+<h4><%= t(:All_cards) %></h4>
 <table>
     <th><%= t(:Original_text) %></th>
     <th><%= t(:Translated_text) %></th>
@@ -14,7 +18,7 @@
 <td><%= card.original_text %></td>
 <td><%= card.translated_text %></td>
 <td><%= card.review_date %></td>
-<td><%= link_to t(:Show) , card_path(card)%></td>
+<td><%= link_to t(:Show) , pack_card_path(@pack, card)%></td>
 </tr>
 <% end %>
 </table>
