@@ -14,10 +14,10 @@ context 'validations' do
     expect(card.set_date).to eq(Date.today)
   end
   
-  it 'not have a user' do
-    card = build(:card, user_id: nil)
+  it 'not have a pack' do
+    card = build(:card, pack_id: nil)
     expect(card.valid?).to eq(false)
-    expect(card.errors[:user][0]).to eq("can't be blank")
+    expect(card.errors[:pack][0]).to eq("can't be blank")
   end
 end  
 end
