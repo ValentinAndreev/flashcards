@@ -1,0 +1,37 @@
+<div class="container">
+  <h4><%= t(:Base_pack) if current_user.review_pack && current_user %></h4>
+  <% @packs.each do |pack| %>
+    <% if pack.base == true %>
+      <div class="well">
+	    <p>
+	      <%= t(:Name)%> <%= pack.title %>
+	    </p>
+	      <p>
+	        <%= link_to t(:Training), showcard_path(pack.id), class: "btn btn-primary" %> 
+	        <%= link_to t(:All_cards), pack_cards_path(pack), class: "btn btn-primary"   %>
+            <%= link_to t(:Rename), edit_pack_path(pack), class: "btn btn-primary"  %>  
+            <%= link_to t(:Delete), pack_path(pack), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>	
+            <%= link_to t(:Remove), remove_path(pack), class: "btn btn-primary" %>
+          </p>
+      </div>
+    <% end %> 
+  <% end %>
+
+<h4><%= t(:All_packs) %></h4>
+  <% @packs.each do |pack| %>
+    <% if pack.base == false %>
+      <div class="well">
+	    <p>
+	      <%= t(:Name)%> <%= pack.title %>
+	    </p>
+	      <p>
+	        <%= link_to t(:Training), showcard_path(pack.id), class: "btn btn-primary" %> 
+	        <%= link_to t(:All_cards), pack_cards_path(pack), class: "btn btn-primary"   %>
+            <%= link_to t(:Rename), edit_pack_path(pack), class: "btn btn-primary"  %>  
+            <%= link_to t(:Delete), pack_path(pack), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>	
+            <%= link_to t(:Add), add_path(pack), class: "btn btn-primary" %>
+          </p>
+      </div>
+    <% end %> 
+  <% end %>
+</div>
