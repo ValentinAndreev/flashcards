@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def showcard
-    @cardcheck = current_user.cards.randomcard if current_user
-    redirect_to cards_path unless @cardcheck 
+    @cardcheck = current_user.review_card(params[:id]).cards.randomcard if current_user && current_user.review_card(params[:id])
+    redirect_to welcome_path, notice: t(:No_cards_for_training) unless current_user && @cardcheck
   end
 end

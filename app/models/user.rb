@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, dependent: :destroy
-  has_many :cards, dependent: :destroy
+  has_many :packs, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, uniqueness: { case_sensitive: false }
+  
+  def review_card(pid = nil)
+    unless pid
+      pack = Pack.where("base = :basep AND user_id = :user", { basep: true, user: id })
+    else
+      pack = Pack.where("id = :idp AND user_id = :user", { idp: pid, user: id })
+    end
+      pack.first if pack.first
+  end
   
   private
   def user_params
