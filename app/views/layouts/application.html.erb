@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <section id="container">
+  <div class="container">
     <header class="clearfix"> 
       <% if current_user %>
         <%= current_user.email %>
@@ -28,9 +28,10 @@
 
       <ul class="nav nav-tabs">  
         <h1> <%= t(:Flashcards) %></h1>  	
-        <%= link_to t(:All_cards), cards_path, class: "navbar-brand" %>
-        <%= link_to t(:New_card), new_card_path, class: "navbar-brand" %>
-        <%= link_to t(:Training), showcard_path, class: "navbar-brand" %>   
+        <%= link_to t(:Training), showcard_path(Pack.basepack.id), class: "navbar-brand" if Pack.basepack %>          
+        <%= link_to t(:All_packs), packs_path, class: "navbar-brand" %>   
+        <%= link_to t(:New_pack), new_pack_path, class: "navbar-brand" %>               
+        <%= link_to t(:Base_pack), pack_cards_path(Pack.basepack), class: "navbar-brand" if Pack.basepack %> 
       </ul>
     </header>
     <h3><%= t(:Flash_cards_manager) %></h3>
@@ -39,6 +40,6 @@
    <p class="alert"><%= alert %></p>
          
   <%= yield %>
-  </section>
+  </div>
 </body>
 </html>
