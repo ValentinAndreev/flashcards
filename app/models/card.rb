@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
-  belongs_to :user
-  validates :original_text, :translated_text, :review_date, :user, presence: true
+  belongs_to :pack
+  validates :original_text, :translated_text, :review_date, :pack, presence: true
   validate :compare
   before_validation :set_date
     

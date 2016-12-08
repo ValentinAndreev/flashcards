@@ -13,10 +13,12 @@ feature 'User can`t do this' do
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: 'password'
     click_on t('Log')
-    expect(page).to have_content t('Succesfully_logined')
-    @card = create(:card, user: @user) 
+    expect(page).to have_content @user.email
+    @pack = create(:pack, user: @user)    
+    @card = create(:card, pack: @pack) 
     @user1 = create(:user, email: 'mail1@mail.com', password: 'password1', password_confirmation: 'password1')
-    @card1 = create(:card, original_text: 'ja', translated_text: 'yes', user: @user1)         
+    @pack1 = create(:pack, user: @user1, title: 'AnotherPack')  
+    @card1 = create(:card, original_text: 'ja', translated_text: 'yes', pack: @pack)         
   end
   
   scenario 'user can`t edit another users profile' do
@@ -24,13 +26,8 @@ feature 'User can`t do this' do
     expect(page).to_not have_content @user1.email                 
   end 
   
-  scenario 'user can`t see another users cards' do
-    click_on t('All_cards')
-    expect(page).to_not have_content @card1.original_text          
-  end   
-  
-  scenario 'user can`t check another users cards' do
-    click_on t('Training')   
-    expect(page).to_not have_content @card1.original_text      
-  end   
+  scenario 'user can`t see another users packs' do
+    click_on t('All_packs')
+    expect(page).to_not have_content @pack1.title          
+  end     
 end
