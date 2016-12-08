@@ -12,6 +12,7 @@ ru:
   Create_user: 'Создать пользователя'
   All_cards: 'Все карточки'
   New_card: 'Новая карточка'
+  New_pack: 'Новая колода'  
   Training: 'Проверка'
   You_are_right: 'Правильно.'
   You_are_wrong_right_translation_is: 'Не правильно. Правильно:'
@@ -34,11 +35,26 @@ ru:
   Delete: 'Удалить'   
   Back: 'Назад'
   Word: 'Слово'
+  Rename: 'Переименовать'
+  All_packs: 'Все колоды'
+  Pack: 'Колода'
+  Name: 'Название'
+  Main: 'Главная'
+  No_cards_for_training: 'Нет карточек для проверки'
+  Add: 'Сделать основной'
+  Remove: 'Убрать из основной'
+  Base_pack: 'Основная колода'
+  Pack_was_made_base: 'Колода была сделана основной'
+  Pack_was_removed_from_base: 'Колода была убрана из основных'
+  Training_with_choosen_pack: 'Тренировка с выбранной колодой'
+  Training_with_base_pack: 'Тренировка с основной колодой'  
+  Training_with_random_pack: 'Тренировка со случайными картами'  
+  This_pack_have_no_cards_with_review_date: 'В этой колоде нет карт с текущей датой, как датой пересмотра'
 
   activerecord:
     errors:
       models:
         card:
           attributes:
-            user:
+            pack:
               blank: "can't be blank"
