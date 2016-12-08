@@ -12,6 +12,7 @@
     <%= t(:Translated_text) %>
     <%= @card.translated_text %>
   </p>
-  <%= link_to t(:Edit), edit_card_path(@card), class: "btn btn-primary"  %>  
-  <%= link_to t(:Delete), card_path(@card), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>
+  <%= link_to t(:Edit), edit_pack_card_path(@pack, @card), class: "btn btn-primary"  %>  
+  <%= link_to t(:Delete), pack_card_path(@pack, @card), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>
+  <%= link_to t(:All_cards), pack_cards_path(@pack), class: "btn btn-primary"   %>
 </div>
