@@ -1,12 +1,13 @@
+<%= @cardcheck[1] %>
 <div class="text-center">	
-<h3><%= t(:Word)%>: <%= @cardcheck.original_text %></h3><hr>
-<% if @cardcheck.image_file_name %>
-<%= image_tag @cardcheck.image.url(:medium) %>
+<h3><%= t(:Word)%>: <%= @cardcheck[0].original_text %></h3><hr>
+<% if @cardcheck[0].image_file_name %>
+<%= image_tag @cardcheck[0].image.url(:medium) %>
 <% end %>
 <%= form_tag(answer_path) do %>
   <%= label_tag(:text, t(:Translated_text)) %><br>
   <%= text_field_tag(:text) %>
-  <%= hidden_field_tag "id", @cardcheck.id %>
+  <%= hidden_field_tag "id", @cardcheck[0].id %>
   <%= submit_tag I18n.t(:Send)  %>
 <% end %>
 </div>
