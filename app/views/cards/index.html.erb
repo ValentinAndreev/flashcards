@@ -1,20 +1,29 @@
-<section>
-      <p style="font-size: 22px;">
-      <% t(:Flash_cards_manager) %>
-      </p>
-</section>
+<h2><% t(:Flash_cards_manager) %></h2>
 
-<h2><% t(:All_cards) %></h2>
-<table>
-    <th><%= t(:Original_text) %></th>
-    <th><%= t(:Translated_text) %></th>
-    <th><%= t(:Date_of_review) %></th>
-<% @card.each do |card| %>
-<tr>
-<td><%= card.original_text %></td>
-<td><%= card.translated_text %></td>
-<td><%= card.review_date %></td>
-<td><%= link_to t(:Show) , card_path(card)%></td>
-</tr>
-<% end %>
-</table>
+<div class="container">
+  <h4><%= t(:Pack) %>:<%= @pack.title %></h4>
+  <p>
+    <%= link_to t(:New_card), new_pack_card_path(@pack), class: "btn btn-primary" %>
+    <%= link_to t(:Training), showcard_path(@pack.id), class: "btn btn-primary" %> 
+    <%= link_to t(:Back), packs_path, class: "btn btn-primary" %> 
+  </p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t(:Original_text) %></th>
+        <th><%= t(:Translated_text) %></th>
+        <th><%= t(:Date_of_review) %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @card.each do |card| %>
+      <tr>
+        <td><%= card.original_text %></td>
+        <td><%= card.translated_text %></td>
+        <td><%= card.review_date %></td>
+        <td><%= link_to t(:Show) , pack_card_path(@pack, card)%></td>        
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

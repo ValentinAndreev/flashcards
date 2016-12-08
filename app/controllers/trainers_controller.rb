@@ -1,13 +1,12 @@
 class TrainersController < ApplicationController
   def review
-    user = User.find(current_user.id)  
-    card = user.cards.find(params[:id])
+    card = Card.find(params[:id])
     translation = CheckTranslation.call(card: card, params: params)
     if translation.success?
       flash.notice = t(:You_are_right) 
     else
       flash.notice = t(:You_are_wrong_right_translation_is) + card.translated_text
     end
-    redirect_to showcard_path 
+    redirect_to :back
   end
 end
