@@ -6,7 +6,7 @@
     <% end %> 
   <% end %>
 
-<h4><%= t(:All_packs) if @packs.count>0 %></h4>
+<h4><%= t(:All_packs) if (@packs.count>1 && current_user&.review_pack) || (@packs.count>0 && !current_user.review_pack) %></h4>
   <% @packs.each do |pack| %>
     <% if pack.base == false %>
       <%= render 'list', pack: pack, button: t(:Add) %>
