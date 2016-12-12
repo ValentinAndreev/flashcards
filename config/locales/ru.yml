@@ -50,6 +50,9 @@ ru:
   Training_with_base_pack: 'Тренировка с основной колодой'  
   Training_with_random_pack: 'Тренировка со случайными картами'  
   This_pack_have_no_cards_with_review_date: 'В этой колоде нет карт с текущей датой, как датой пересмотра'
+  Right_checks: 'Правильных ответов'      
+  Wrong_checks: 'Неправильных ответов'
+  Actions: 'Действия'
 
   activerecord:
     errors:
