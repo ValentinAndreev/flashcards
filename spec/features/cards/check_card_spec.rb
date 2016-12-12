@@ -24,7 +24,7 @@ feature 'Check translation' do
     expect(page).to have_content 'nicht'
     fill_in t('Translated_text'), with: 'not'
     click_on t('Send')
-    expect(page).to have_content t('You_are_right')
+    expect(page).to have_content t('You_are_right')     
   end
 
   scenario 'wrong translation' do  
