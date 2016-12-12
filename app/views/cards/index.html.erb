@@ -13,6 +13,9 @@
         <th><%= t(:Original_text) %></th>
         <th><%= t(:Translated_text) %></th>
         <th><%= t(:Date_of_review) %></th>
+        <th><%= t(:Right_checks) %></th>        
+        <th><%= t(:Wrong_checks) %></th>      
+        <th><%= t(:Actions) %></th>             
       </tr>
     </thead>
     <tbody>
@@ -20,8 +23,14 @@
       <tr>
         <td><%= card.original_text %></td>
         <td><%= card.translated_text %></td>
-        <td><%= card.review_date %></td>
-        <td><%= link_to t(:Show) , pack_card_path(@pack, card)%></td>        
+        <td><%= card.review_date.to_time.strftime('%F %H:%M') %></td>
+        <th><%= card.right_checks %></th>        
+        <th><%= card.wrong_checks %></th>          
+        <td>
+          <%= link_to t(:Show) , pack_card_path(@pack, card)%>      
+          <%= link_to t(:Edit), edit_pack_card_path(@pack, card)%>  
+          <%= link_to t(:Delete), pack_card_path(@pack, card), method: :delete, data: {confirm: 'Are you sure?'}%>
+        </th>         
       </tr>
     <% end %>
     </tbody>
