@@ -14,10 +14,12 @@ class Card < ActiveRecord::Base
   end
      
   def set_date
-    self.review_date ||= Date.today
-  end    
+    self.review_date ||= Time.now
+    self.wrong_checks ||= 0    
+    self.right_checks ||= 0    
+  end   
     
- def compare
-   errors.add(:original_text, "Equal text") if self.original_text.mb_chars.downcase.to_s == self.translated_text.mb_chars.downcase.to_s
- end
+  def compare
+    errors.add(:original_text, "Equal text") if self.original_text.mb_chars.downcase.to_s == self.translated_text.mb_chars.downcase.to_s
+  end
 end
