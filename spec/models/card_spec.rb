@@ -11,7 +11,7 @@ context 'validations' do
   
   it "set date" do
     card = create(:card, review_date: nil)
-    expect(card.set_date).to eq(Date.today)
+    expect(card.review_date).to eq(Time.now.to_date)
   end
   
   it 'not have a pack' do
