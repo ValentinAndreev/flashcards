@@ -33,12 +33,12 @@ class User < ActiveRecord::Base
 
   def random_all
     all_cards = Card.where("user_id = ?", id) 
-    all_cards.order("RANDOM()").first if all_cards
+    all_cards.randomcard
   end
 
   def select_card(pack_id = nil)
     if pack_id && get_card(pack_id.to_i)
-      [get_card(pack_id.to_i) , I18n.t(:Training_with_choosen_pack)]
+      [get_card(pack_id.to_i), I18n.t(:Training_with_choosen_pack)]
     elsif review_pack && get_card(review_pack.id) 
       [get_card(review_pack.id), I18n.t(:Training_with_base_pack)]
     else
