@@ -34,6 +34,13 @@ feature 'Check translation' do
     expect(page).to have_content t('You_are_wrong_right_translation_is')
   end
 
+  scenario 'mistake' do  
+    expect(page).to have_content 'nicht'    
+    fill_in t('Translated_text'), with: 'nut'
+    click_on t('Send')
+    expect(page).to have_content t('Wrong_typed_word')
+  end
+
   scenario 'all right translations' do 
     5.times {
       datejump = Card.find(card.id).review_date

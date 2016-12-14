@@ -53,6 +53,8 @@ ru:
   Right_checks: 'Правильных ответов'      
   Wrong_checks: 'Неправильных ответов'
   Actions: 'Действия'
+  Wrong_typed_word: 'Вы опечатались'
+  must_be: 'а должно быть'
 
   activerecord:
     errors:
