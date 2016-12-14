@@ -100,6 +100,7 @@ GEM
     jwt (1.5.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    levenshtein-c (0.1.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -240,6 +241,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  levenshtein-c
   nokogiri
   paperclip (~> 5.0.0)
   pg
