@@ -25,9 +25,10 @@ RSpec.describe Card, type: :model do
       i = 0
       5.times { 
         review = card.review_date
-        result = translation({ text: 'not' }) 
-        expect(card.review_date).to eq(review + time[i].hours)  
+        result = translation({ text: 'not' })       
+        expect(card.review_date.strftime('%F %H:%M')).to eq((Time.zone.now. + time[i].hours).strftime('%F %H:%M'))
         i += 1 
+        expect(card.right_checks).to eq(i)          
       }       
     end
   
@@ -46,8 +47,8 @@ RSpec.describe Card, type: :model do
       4.times { 
         review = card.review_date
         3.times { result = translation({ text: 'yes' })  }
-        expect(card.review_date).to eq(review - time[i].hours)  
-        expect(card.right_checks).to eq(i)          
+        expect(card.right_checks).to eq(i)  
+        expect(card.review_date.strftime('%F %H:%M')).to eq((Time.zone.now. + time[i].hours).strftime('%F %H:%M'))                
         i -= 1 
       }                     
     end

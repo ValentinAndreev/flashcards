@@ -28,7 +28,7 @@
 
       <ul class="nav nav-tabs">  
         <h1> <%= t(:Flashcards) %></h1>  	               
-        <%= link_to t(:Training), showcard_path, class: "navbar-brand" if current_user&.review_pack %>               
+        <%= link_to t(:Training), showcard_path, class: "navbar-brand" if current_user %>               
         <%= link_to t(:All_packs), packs_path, class: "navbar-brand" %>   
         <%= link_to t(:New_pack), new_pack_path, class: "navbar-brand" %>               
         <%= link_to t(:Base_pack), pack_cards_path(current_user.review_pack.id), class: "navbar-brand" if current_user&.review_pack %> 

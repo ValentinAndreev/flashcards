@@ -1,3 +1,4 @@
+# OauthsController
 class OauthsController < ApplicationController
   skip_before_filter :require_login
 
@@ -6,23 +7,25 @@ class OauthsController < ApplicationController
   end
 
   def callback
-    provider = auth_params[:provider]
-    if @user = login_from(provider)
-      redirect_to root_path, notice: t(:Login_from_twitter)
+    @user = login_from(auth_params[:provider])
+    if @user
+      @message = t(:Login_from_twitter)
     else
       begin
         @user = create_from(provider)
         reset_session
         auto_login(@user)
-        redirect_to root_path, notice: t(:Login_from_twitter)
+        @message = t(:Login_from_twitter)
       rescue
-        redirect_to root_path, notice: t(:Cant_login_from_twitter)
+        @message = t(:Cant_login_from_twitter)
       end
     end
+    redirect_to welcome_path, notice: @message
   end
-  
- private
- def auth_params
-   params.permit(:code, :provider)
- end
+
+  private
+
+  def auth_params
+    params.permit(:code, :provider)
+  end
 end

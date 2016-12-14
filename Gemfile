@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'aws-sdk'
 gem "paperclip", "~> 5.0.0"
 gem 'sorcery'
@@ -9,8 +9,9 @@ gem 'interactor'
 gem 'nokogiri'
 gem 'simple_form'
 gem 'pg'
+gem 'levenshtein-c'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7.1'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
@@ -48,8 +49,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.5'
-  gem 'factory_girl_rails'  
-  gem 'capybara'  
+  gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'launchy'
 end
 

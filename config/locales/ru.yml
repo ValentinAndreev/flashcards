@@ -46,13 +46,14 @@ ru:
   Base_pack: 'Основная колода'
   Pack_was_made_base: 'Колода была сделана основной'
   Pack_was_removed_from_base: 'Колода была убрана из основных'
-  Training_with_choosen_pack: 'Тренировка с выбранной колодой'
   Training_with_base_pack: 'Тренировка с основной колодой'  
   Training_with_random_pack: 'Тренировка со случайными картами'  
   This_pack_have_no_cards_with_review_date: 'В этой колоде нет карт с текущей датой, как датой пересмотра'
   Right_checks: 'Правильных ответов'      
   Wrong_checks: 'Неправильных ответов'
   Actions: 'Действия'
+  Wrong_typed: 'Вы опечатались %{mistake} а должно быть %{text}'
+  Test_wrong_typed: 'Вы опечатались'
 
   activerecord:
     errors:

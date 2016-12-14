@@ -1,8 +1,8 @@
+# HomeController
 class HomeController < ApplicationController
-
   def showcard
-    @cardcheck = current_user.select_card(params[:id])
-    redirect_to packs_path, notice: t(:No_cards_for_training) unless @cardcheck    
+    @cardcheck = current_user.select_card
+    redirect_to packs_path, notice: t(:No_cards_for_training) unless @cardcheck[0]
   end
 
   def welcome

@@ -1,3 +1,4 @@
+# UserController
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: t(:Profile_was_changed)
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end

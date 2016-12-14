@@ -3,12 +3,8 @@
 	  <%= t(:Name)%> <%= pack.title %>
 	</p>
 	<p>
-    <% if pack.cards.review.count>0 %>
-      <%= link_to t(:Training), showcard_path(pack.id), class: "btn btn-primary" if button == t(:Add) %> 
-    <% else %>
-      <%= t(:This_pack_have_no_cards_with_review_date) %><br>
-    <% end %>
-	  <%= link_to t(:All_cards), pack_cards_path(pack), class: "btn btn-primary"   %>
+    <%= t(:This_pack_have_no_cards_with_review_date) if pack.cards.review.count == 0 %><br>
+    <%= link_to t(:All_cards), pack_cards_path(pack), class: "btn btn-primary"   %>
     <%= link_to t(:Rename), edit_pack_path(pack), class: "btn btn-primary"  %>  
     <%= link_to t(:Delete), pack_path(pack), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-primary"   %>	
     <%= link_to t(:Add), add_path(pack), class: "btn btn-primary" if button == t(:Add)%>

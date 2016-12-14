@@ -6,7 +6,7 @@ def t(string, options={})
 end
 
 feature 'Logined user actions' do   
-  let!(:user) { create(:user) } 
+  let!(:user) { create(:user, password: 'password') } 
   let!(:pack) { create(:pack, user: user, base: false) }   
   let!(:card) { create(:card, pack: pack, user_id: user.id) }  
 
@@ -105,12 +105,6 @@ feature 'Logined user actions' do
   end
   
   scenario 'user must be redirected to training' do   
-    expect(page).to have_content t('Word')   
-  end
-
-  scenario 'user can train with all packs' do
-    click_on t('All_packs') 
-    click_on t('Training') 
     expect(page).to have_content t('Word')   
   end
 end  
