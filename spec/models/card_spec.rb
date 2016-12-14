@@ -11,7 +11,7 @@ context 'validations' do
   
   it "set date" do
     card = create(:card, review_date: nil)
-    expect(card.set_date).to eq(Date.today)
+    expect(card.review_date).to eq(Time.now.strftime('%F %H').to_datetime)
   end
   
   it 'not have a pack' do
@@ -22,8 +22,8 @@ context 'validations' do
 
   it 'random card' do
     pack = create(:pack)
-    card = create(:card, pack: pack, review_date: Date.today+5)
-    card1 = create(:card, pack: pack, review_date: Date.today)  
+    card = create(:card, pack: pack, review_date: Time.now.strftime('%F %H').to_datetime + 10.hours)
+    card1 = create(:card, pack: pack, review_date: Time.now.strftime('%F %H').to_datetime)  
     expect(Card.randomcard).to eq(card1)      
   end
 end  
