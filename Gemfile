@@ -9,6 +9,7 @@ gem 'interactor'
 gem 'nokogiri'
 gem 'simple_form'
 gem 'pg'
+gem 'levenshtein-c'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
