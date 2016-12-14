@@ -5,8 +5,8 @@ class TrainersController < ApplicationController
     if translation.success?
       flash.notice = t(:You_are_right) 
     else
-      flash.notice = t(:You_are_wrong_right_translation_is) + card.translated_text
+      flash.notice = translation.errors
     end
-    redirect_to :back
+    redirect_to showcard_path
   end
 end
