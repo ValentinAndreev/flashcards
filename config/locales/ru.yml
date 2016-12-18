@@ -54,6 +54,9 @@ ru:
   Actions: 'Действия'
   Wrong_typed: 'Вы опечатались %{mistake} а должно быть %{text}'
   Test_wrong_typed: 'Вы опечатались'
+  Time_to_check_your_cards: 'Время проверки карточек'
+  Hello_from_flashcards: 'Привет от флэшкарточкера'
+  We_want_to_inform_you_about: 'Мы хотим напомнить о:'
 
   activerecord:
     errors:
