@@ -19,3 +19,4 @@
 /config/twitterkeys.env
 /config/database.yml
 /config/aws.env
+/config/email.env
