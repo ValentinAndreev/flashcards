@@ -16,6 +16,7 @@ class CardsController < ApplicationController
 
   def create
     @card = @pack.cards.new(card_params)
+    @card.user_id = current_user.id
     if @card.save
       redirect_to pack_cards_path
     else
