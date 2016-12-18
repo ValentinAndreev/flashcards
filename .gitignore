@@ -19,3 +19,5 @@
 /config/twitterkeys.env
 /config/database.yml
 /config/aws.env
+/config/email.env
+/cron_log.log
