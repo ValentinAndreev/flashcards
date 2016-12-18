@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
     uniqueness: { case_sensitive: false }
 
+  def self.send_email
+    CardsMailer.pending_cards_notification.deliver_now
+  end
+
+  def self.notifications_list
+    User.where(id: Card.review.select("user_id")).distinct
+  end
+
   def review_pack
     packs.find_by(base: true)
   end
