@@ -17,6 +17,12 @@ class User < ActiveRecord::Base
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
     uniqueness: { case_sensitive: false }
 
+  def self.notifications_list
+    User.find_each do |user|
+      CardsMailer.pending_cards_notification(user) if user.cards.review 
+    end
+  end
+
   def review_pack
     packs.find_by(base: true)
   end
