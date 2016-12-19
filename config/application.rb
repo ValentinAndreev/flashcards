@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails/all'
+require 'dotenv-rails'
 
 
 # Require the gems listed in Gemfile, including any gems
@@ -21,6 +22,19 @@ module Flashcards
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host:'localhost', port: '3000' }
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.default :charset => "utf-8"
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.mail.ru",
+      :port => 465,
+      :domain => 'localhost:3000',
+      :user_name => ENV['MAIL_NAME'],
+      :password => ENV['MAIL_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
   end
 end
