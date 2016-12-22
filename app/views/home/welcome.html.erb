@@ -1,1 +1,5 @@
-<h3><%= t(:Hello_you_must_register_or_login_to_continue)%></h3>
+<% if current_user %>
+  <h3><%= t(:Hello)+' '+current_user.email %></h3>
+<% else %>
+  <h3><%= t(:Hello_you_must_register_or_login_to_continue)%></h3>
+<% end %>
