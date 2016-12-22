@@ -12,7 +12,7 @@ feature 'Check translation' do
 
   before do
     visit welcome_path     
-    click_on t('Login')
+    click_on t('Sign_in')
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'password'
     click_on t('Log')    

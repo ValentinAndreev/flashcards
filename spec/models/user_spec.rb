@@ -30,7 +30,7 @@ context 'cards' do
   let!(:card) { create(:card, pack: pack, user_id: user.id) }    
 
   it 'default_cards' do
-    user.default(pack)    
+    user.default(pack)
     expect(user.select_card[0]).to eq(card)
   end
 
@@ -45,4 +45,19 @@ context 'cards' do
     expect(user.select_card[0]).to eq(card)
   end  
 end  
+
+context 'locale' do
+
+  it 'cant create locale not included in available_locales' do
+    user = build(:user, locale: :qqqqq)
+    expect(user.valid?).to eq(false)
+    expect(user.errors[:locale][0]).to eq("is not included in the list")
+  end
+
+  it 'can create locale included in available_locales' do
+    locale = I18n.available_locales[0]
+    user = build(:user, locale: locale)
+    expect(user.valid?).to eq(true)
+  end
+end
 end
