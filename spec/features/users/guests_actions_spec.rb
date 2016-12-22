@@ -18,8 +18,17 @@ feature 'Guests actions' do
     expect(page).to_not have_content t('Edit_profile')    
   end 
   
-  scenario 'guest can`t see packs and cards' do
-    click_on t('All_packs')      
-    expect(page).to_not have_content t('All_cards')   
+  scenario 'guest can`t see packs and cards' do    
+    expect(page).to_not have_content t('All_cards')     
   end   
+
+  scenario 'guest can change the language' do
+    if I18n.available_locales.count > 1
+      old_locale = I18n.available_locales[0]
+      I18n.locale = old_locale
+      new_locale = I18n.available_locales[1]
+      click_on t(:Change_language, lang: new_locale), locale_path(new_locale)
+      expect(I18n.locale).to_not eq(old_locale)
+    end
+  end
 end

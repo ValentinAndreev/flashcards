@@ -5,10 +5,11 @@
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
+    <%= f.input :locale, include_blank: false, collection: I18n.available_locales.map { |x| x.to_s } %>    
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.button :submit, I18n.t(:Update_user), class: "btn btn-primary" %>
   </div>
 <% end %>
 <%= link_to t(:Back), root_path %>
