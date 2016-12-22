@@ -12,7 +12,7 @@ feature 'Logined user actions' do
 
   before do
     visit welcome_path
-    click_on t('Login')
+    click_on t('Sign_in')
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'password'
     click_on t('Log')
@@ -28,9 +28,10 @@ feature 'Logined user actions' do
     click_on t('Edit_profile') 
     fill_in 'Email', with: 'mail1@mail.com'
     fill_in 'Password', with: 'password1'   
-    fill_in 'Password confirmation', with: 'password1'        
-    click_on 'Update User'  
-    visit welcome_path   
+    fill_in 'Password confirmation', with: 'password1' 
+    page.select :en, from: 'Locale'   
+    click_on t('Update_user')
+    visit welcome_path
     expect(page).to have_content 'mail1@mail.com'
   end
   
@@ -49,8 +50,8 @@ feature 'Logined user actions' do
     click_on t('All_cards')   
     click_on t('Show')     
     click_on t('Edit') 
-    fill_in 'Translated text', with: 'not'
-    click_on 'Update Card'   
+    fill_in t('Translated_text'), with: 'not'
+    click_on t('Update_сard')   
     expect(page).to have_content('not')     
   end 
 
@@ -103,8 +104,14 @@ feature 'Logined user actions' do
     click_on t('Remove')  
     expect(page).to have_content t('Pack_was_removed_from_base')    
   end
-  
-  scenario 'user must be redirected to training' do   
-    expect(page).to have_content t('Word')   
-  end
+
+  scenario 'user can change the language' do
+    if I18n.available_locales.count > 1
+      old_locale = I18n.available_locales[0]
+      I18n.locale = old_locale
+      new_locale = I18n.available_locales[1]
+      click_on t(:Change_language, lang: new_locale), locale_path(new_locale)
+      expect(I18n.locale).to_not eq(old_locale)
+    end
+  end  
 end  

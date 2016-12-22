@@ -9,7 +9,7 @@ feature 'User can`t do this' do
   before do
     @user = create(:user) 
     visit root_path
-    click_on t('Login')
+    click_on t('Sign_in')
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: 'password'
     click_on t('Log')
