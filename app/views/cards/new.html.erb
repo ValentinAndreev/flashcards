@@ -7,6 +7,6 @@
 <%= card.text_field :translated_text, size: '100', class: "form-control" %><br>
 <%= card.label :review_date  %><br>
 <%= card.datetime_field :review_date, size: '100', placeholder: Time.now, class: "form-control" %><br>
-<%= card.submit class: "btn btn-primary" %>
+<%= card.submit t(:Create_card), class: "btn btn-primary" %>
 <%= link_to t(:All_cards), pack_cards_path(@pack), class: "btn btn-primary"   %>
 <% end %>
