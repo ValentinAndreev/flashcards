@@ -16,22 +16,28 @@
     <header class="clearfix"> 
       <% if current_user %>
         <%= current_user.email %>
+        <%= current_user.locale if current_user&.locale %>
         <%= link_to t(:Edit_profile), edit_user_path(current_user.id) %>
         <%= link_to t(:Logout), logout_path, method: :post %>
       <% else %>
-        <%= link_to t(:Registration), new_user_path %> |
-        <%= link_to t(:Login), login_path %>
+        <%= link_to t(:Registration), new_user_path %>
+        <%= link_to t(:Sign_in), login_path %>
         <% if Rails.application.config.sorcery.external_providers.include?(:twitter) %>
-        | <%= link_to t(:Login_from_twitter), auth_at_provider_path(provider: :twitter) %>  
-        <% end %>
-      <% end %> 	
-
+          | <%= link_to t(:Sign_in_from_twitter), auth_at_provider_path(provider: :twitter) %>
+        <% end %>   
+      <% end %>
+ 
       <ul class="nav nav-tabs">  
         <h1> <%= t(:Flashcards) %></h1>  	               
         <%= link_to t(:Training), showcard_path, class: "navbar-brand" if current_user %>               
         <%= link_to t(:All_packs), packs_path, class: "navbar-brand" %>   
         <%= link_to t(:New_pack), new_pack_path, class: "navbar-brand" %>               
         <%= link_to t(:Base_pack), pack_cards_path(current_user.review_pack.id), class: "navbar-brand" if current_user&.review_pack %> 
+        <% unless current_user %>
+          <% I18n.available_locales.each do |loc| %>
+            <%= link_to t(:Set_language)+' '+loc.to_s, locale_path(loc), class: "btn pull-right btn-info btn-xs" unless I18n.locale == loc %>
+          <% end %>
+        <% end %>
       </ul>
     </header>
     

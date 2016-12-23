@@ -6,6 +6,9 @@ class HomeController < ApplicationController
   end
 
   def welcome
-    redirect_to showcard_path if current_user
+    if current_user
+      I18n.locale = current_user.locale
+      redirect_to showcard_path if current_user
+    end
   end
 end
