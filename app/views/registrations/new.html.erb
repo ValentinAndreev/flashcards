@@ -1,10 +1,11 @@
-<h3>Регистрация</h3>
+<h3><%= t(:Registration) %></h3>
 <%= simple_form_for @user, :url => new_user_path do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
+    <%= f.input :locale, include_blank: false, collection: I18n.available_locales %>      
   </div>
 
   <div class="form-actions">
