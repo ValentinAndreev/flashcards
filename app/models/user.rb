@@ -12,10 +12,12 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+  # validates :locale, presence: true, inclusion: { in: I18n.available_locales }
 
   validates :email, presence: true,
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create },
     uniqueness: { case_sensitive: false }
+
 
   def self.send_email
     CardsMailer.pending_cards_notification(notifications_list).deliver_now if notifications_list
