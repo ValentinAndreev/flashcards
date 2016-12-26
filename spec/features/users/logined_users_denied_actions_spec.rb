@@ -18,7 +18,7 @@ feature 'User can`t do this' do
     @card = create(:card, pack: @pack) 
     @user1 = create(:user, email: 'mail1@mail.com', password: 'password1', password_confirmation: 'password1')
     @pack1 = create(:pack, user: @user1, title: 'AnotherPack')  
-    @card1 = create(:card, original_text: 'ja', translated_text: 'yes', pack: @pack)         
+    @card1 = create(:card, original_text: 'wettbewerbsfähigkeit', translated_text: 'competitiveness', pack: @pack)         
   end
   
   scenario 'user can`t edit another users profile' do
