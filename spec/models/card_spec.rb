@@ -9,9 +9,11 @@ context 'validations' do
     expect(card.compare[0]).to eq("Equal text")
   end
   
-  it "set date" do
+  it "set parameters" do
     card = create(:card, review_date: nil)
-    expect(card.review_date.strftime('%F %H').to_datetime).to eq(Time.zone.now.strftime('%F %H').to_datetime)
+    expect(card.checks).to eq(0)
+    expect(card.review_time).to eq(0)
+    expect(card.ef).to eq(2.5)    
   end
   
   it 'not have a pack' do

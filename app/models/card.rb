@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
   belongs_to :pack
   validates :original_text, :translated_text, :review_date, :pack, presence: true
   validate :compare
-  before_validation :set_date
+  before_validation :set_parameters
 
   scope :review, -> { where("review_date <= ?", Time.now) }
 
@@ -14,10 +14,10 @@ class Card < ActiveRecord::Base
     Card.review.order("RANDOM()").first
   end
 
-  def set_date
+  def set_parameters
     self.review_date ||= Time.now
-    self.wrong_checks ||= 0
-    self.right_checks ||= 0
+    self.checks ||= 0
+    self.review_time ||= 0
   end
 
   def compare

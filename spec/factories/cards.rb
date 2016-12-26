@@ -3,8 +3,9 @@ FactoryGirl.define do
     original_text 'nicht'
     translated_text 'not'
     review_date Time.now
-    wrong_checks 0
-    right_checks 0
+    checks 0
+    review_time 0
+    ef 2.5
     association :pack, factory: :pack
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'test_files', 'cat.jpg')) }
     image_content_type "image/jpeg"

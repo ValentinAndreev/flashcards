@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222162627) do
+ActiveRecord::Schema.define(version: 20161226094429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,19 +27,20 @@ ActiveRecord::Schema.define(version: 20161222162627) do
   add_index "authentications", ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
 
   create_table "cards", force: :cascade do |t|
-    t.string   "original_text",      null: false
-    t.string   "translated_text",    null: false
+    t.string   "original_text",                    null: false
+    t.string   "translated_text",                  null: false
     t.datetime "review_date"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "pack_id"
-    t.integer  "right_checks"
-    t.integer  "wrong_checks"
     t.integer  "user_id"
+    t.integer  "checks"
+    t.integer  "review_time"
+    t.float    "ef",                 default: 2.5
   end
 
   add_index "cards", ["pack_id"], name: "index_cards_on_pack_id", using: :btree
