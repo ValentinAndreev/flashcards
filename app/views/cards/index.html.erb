@@ -12,8 +12,7 @@
         <th><%= t(:Original_text) %></th>
         <th><%= t(:Translated_text) %></th>
         <th><%= t(:Date_of_review) %></th>
-        <th><%= t(:Right_checks) %></th>        
-        <th><%= t(:Wrong_checks) %></th>      
+        <th><%= t(:Checks) %></th>          
         <th><%= t(:Actions) %></th>             
       </tr>
     </thead>
@@ -23,8 +22,7 @@
         <td><%= card.original_text %></td>
         <td><%= card.translated_text %></td>
         <td><%= card.review_date.to_time.strftime('%F %H:%M') %></td>
-        <th><%= card.right_checks %></th>        
-        <th><%= card.wrong_checks %></th>          
+        <th><%= card.checks %></th>              
         <td>
           <%= link_to t(:Show) , pack_card_path(@pack, card)%>      
           <%= link_to t(:Edit), edit_pack_card_path(@pack, card)%>  
