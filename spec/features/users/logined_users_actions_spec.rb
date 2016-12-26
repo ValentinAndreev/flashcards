@@ -43,15 +43,15 @@ feature 'Logined user actions' do
   end 
     
   scenario 'user can edit own cards' do
-    card.translated_text = 'yes'
+    card.translated_text = 'competitiveness'
     card.save
     click_on t('All_packs')      
     click_on t('All_cards')   
     click_on t('Show')     
     click_on t('Edit') 
-    fill_in t('Translated_text'), with: 'not'
+    fill_in t('Translated_text'), with: 'abstractiveness'
     click_on t('Update_сard')   
-    expect(page).to have_content('not')     
+    expect(page).to have_content('abstractiveness')     
   end 
 
   scenario 'user can delete own cards' do
@@ -59,7 +59,7 @@ feature 'Logined user actions' do
     click_on t('All_cards')  
     click_on t('Show')     
     click_on t('Delete')  
-    expect(page).to_not have_content('not')    
+    expect(page).to_not have_content('abstractiveness')    
   end 
   
   scenario 'user can see check page' do
