@@ -4,45 +4,59 @@ class CheckTranslation
   include Interactor
 
   def call
-    text = context.card.translated_text
-    right = context.card.right_checks
-    text == context.params[:text] ? right_answer(right) : wrong_answer(right)
-    context.card.save
+    @review_time = context.card.review_time
+    @text = context.card.translated_text
+    @checks = context.card.checks
+    @timer = context.params[:time].to_i
+    @ef = context.card.ef
+    if @text == context.params[:text] 
+      right_answer 
+      context.card.checks += 1      
+    else 
+      wrong_answer
+    end
+      context.card.save
   end
 
   def levens
     text = context.card.translated_text
     distance = Levenshtein.distance(text, context.params[:text])
-    distance > 1 ? t(:You_are_wrong_right_translation_is) + text : t(:Wrong_typed, mistake: context.params[:text], text: text)
   end
 
-  def set_time
-    time = [0, 12, 72, 168, 336, 672]
-    time[context.card.right_checks]
+  def set_time(ef)
+    next_time = if @checks == 0 then 24
+      elsif @checks == 1 then 144
+      else @ef*@review_time
+      end
+    context.card.review_date = next_time.ceil.hours.from_now
+    context.card.review_time = next_time.ceil   
   end
 
-  def t(string, options = {})
-    I18n.t(string, options)
-  end
-
-  def right_answer(right)
-    context.card.right_checks += 1 if right < 5
-    move_time
-  end
-
-  def wrong_answer(right)
-    context.errors = levens
-    if context.card.wrong_checks < 2
-      context.card.wrong_checks += 1 if right > 0
-    else
-      context.card.wrong_checks = 0
-      context.card.right_checks -= 1 if right > 0
-      move_time
+  def new_ef(q)  
+    @ef += (0.1-(5-q)*(0.08+(5-q)*0.02))
+    @ef = 1.3 if @ef < 1.3
+    if q < 3
+      @checks = 0
     end
-    context.fail!
+    @ef = 2.5 if @checks < 2
+    context.card.ef = @ef
   end
-  
-  def move_time
-    context.card.review_date = set_time.hours.from_now if context.card.right_checks.nonzero?
+
+  def right_answer
+    q = if @timer < 3 then 5
+      elsif @timer < 6 then 4
+      else 3
+      end
+    set_time(new_ef(q))  
+  end
+
+  def wrong_answer
+    q = if levens == 1 then 2
+      elsif levens == 2 then 1
+      else 0
+      end    
+    context.errors = levens
+    set_time(new_ef(q))
+    context.fail!
   end
 end
