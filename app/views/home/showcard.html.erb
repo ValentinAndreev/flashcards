@@ -6,9 +6,18 @@
 <% end %>
 <%= form_tag(answer_path) do %>
   <%= label_tag(:text, t(:Translated_text)) %><br>
-  <%= text_field_tag(:text) %>
+  <%= text_field_tag :text, nil, :required => true %>
   <%= hidden_field_tag "id", @cardcheck[0].id %>
+  <%= hidden_field_tag "time", 0 %>
   <%= submit_tag I18n.t(:Send)  %>
 <% end %>
 </div>
 <hr>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  setInterval(function(){
+  document.getElementById("time").value++; 
+  },1000);
+});	
+</script>
