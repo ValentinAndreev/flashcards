@@ -12,6 +12,10 @@ gem 'pg'
 gem 'levenshtein-c'
 gem 'whenever', require: false
 gem 'http_accept_language'
+gem 'rollbar'
+gem 'newrelic_rpm'
+gem "letter_opener", group: :development
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use sqlite3 as the database for Active Record

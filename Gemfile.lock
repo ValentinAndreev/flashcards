@@ -105,6 +105,8 @@ GEM
     jwt (1.5.6)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     levenshtein-c (0.1.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -119,6 +121,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    newrelic_rpm (3.17.2.327)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     oauth (0.5.1)
@@ -170,6 +173,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
     rdoc (4.3.0)
+    rollbar (2.14.0)
+      multi_json
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -250,12 +255,15 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  letter_opener
   levenshtein-c
+  newrelic_rpm
   nokogiri
   paperclip (~> 5.0.0)
   pg
   rails (= 4.2.7.1)
   rails_12factor
+  rollbar
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

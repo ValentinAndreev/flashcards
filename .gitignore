@@ -20,4 +20,5 @@
 /config/database.yml
 /config/aws.env
 /config/email.env
+/config/sendgrid.env
 /cron_log.log

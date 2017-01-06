@@ -1,4 +1,26 @@
 Rails.application.configure do
+  config.action_mailer.default_options = {from: 'valentinandreev80@gmail.com'}
+  config.action_mailer.smtp_settings = {
+    user_name: ENV['MAIL_NAME'],
+    password: ENV['MAIL_PASSWORD'],
+    domain: 'valentinandreev80@gmail.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        bucket: 'flashcardsimages',
+        s3_region: 'eu-central-1',
+        s3_protocol: 'https',
+        s3_host_name: 's3.eu-central-1.amazonaws.com', 
+        access_key_id: ENV['ACCESS_KEY_ID'],
+        secret_access_key: ENV['SECRET_ACCESS_KEY']
+      }
+    }
 
   # Settings specified here will take precedence over those in config/application.rb.
 

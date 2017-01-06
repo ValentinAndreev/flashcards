@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 require 'rails/all'
-require 'dotenv-rails'
-
+#require 'dotenv-rails'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -9,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Flashcards
   class Application < Rails::Application
-    Dotenv.load(Rails.root.join('config', 'email.env'))
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -24,15 +22,15 @@ module Flashcards
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.action_mailer.default_options = {from: 'valentinandreev80@gmail.com'}
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      user_name:            ENV['MAIL_NAME'],
-      password:             ENV['MAIL_PASSWORD'],
-      authentication: :plain,
-      enable_starttls_auto: true
-    }
+    #config.action_mailer.default_options = {from: 'valentinandreev80@gmail.com'}
+    #config.action_mailer.delivery_method = :smtp
+    #config.action_mailer.smtp_settings = {
+    #  address:              'smtp.gmail.com',
+    #  port:                 587,
+    #  user_name:            ENV['MAIL_NAME'],
+    #  password:             ENV['MAIL_PASSWORD'],
+    #  authentication: :plain,
+    #  enable_starttls_auto: true
+    #}
   end
 end

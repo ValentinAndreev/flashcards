@@ -14,10 +14,6 @@ class Card < ActiveRecord::Base
     Card.review.order("RANDOM()").first
   end
 
-  def self.repeatcard
-    Card.repeat.order("RANDOM()").first
-  end
-
   def set_parameters
     self.review_date ||= Time.now
     self.checks ||= 0

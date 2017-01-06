@@ -13,8 +13,7 @@ Rails.application.configure do
         access_key_id: ENV['ACCESS_KEY_ID'],
         secret_access_key: ENV['SECRET_ACCESS_KEY']
       }
-  }
-
+    }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
