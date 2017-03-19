@@ -13,11 +13,11 @@
 4. rails s  
 
 Mkdev courses https://mkdev.me
-1. Git (feature-new branch - pull request - merge).
-2. Use Interactor (use case object).
-3. Other gems:
+* Git (feature-new branch - pull request - merge).
+* Use Interactor (use case object).
+* Other gems:
 gem 'dotenv-rails', require: 'dotenv/rails-now', gem 'aws-sdk', gem "paperclip", gem 'sorcery', gem 'nokogiri', gem 'simple_form', gem 'pg', gem 'levenshtein-c', gem 'whenever', gem 'http_accept_language', gem "letter_opener" etc.
-4. Testing with:
+* Testing with:
 gem 'rspec-rails', gem 'factory_girl_rails', gem 'capybara', gem 'launchy', gem 'database_cleaner', gem 'timecop'
-5. Using services: Travis CI, Hound CI, Rollbar(error tracking service), New Relic(for performance monitoring), SendGrid(for mail sending), Code Climate.
-6. Deploy on Heroku https://myflashcardssite.herokuapp.com.
+* Using services: Travis CI, Hound CI, Rollbar(error tracking service), New Relic(for performance monitoring), SendGrid(for mail sending), Code Climate.
+* Deploy on Heroku https://myflashcardssite.herokuapp.com.
