@@ -16,7 +16,7 @@ Mkdev courses https://mkdev.me
 * Git (feature-new branch - pull request - merge).
 * Use Interactor (use case object).
 * Other gems:
-gem 'dotenv-rails', require: 'dotenv/rails-now', gem 'aws-sdk', gem "paperclip", gem 'sorcery', gem 'nokogiri', gem 'simple_form', gem 'pg', gem 'levenshtein-c', gem 'whenever', gem 'http_accept_language', gem "letter_opener" etc.
+gem 'dotenv-rails', gem 'aws-sdk', gem "paperclip", gem 'sorcery', gem 'nokogiri', gem 'simple_form', gem 'pg', gem 'levenshtein-c', gem 'whenever', gem 'http_accept_language', gem "letter_opener" etc.
 * Testing with:
 gem 'rspec-rails', gem 'factory_girl_rails', gem 'capybara', gem 'launchy', gem 'database_cleaner', gem 'timecop'
 * Using services: Travis CI, Hound CI, Rollbar(error tracking service), New Relic(for performance monitoring), SendGrid(for mail sending), Code Climate.
